@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+  <title>COVID19 TRACK</title>
+</head>
+
+<body>
+  {% comment %} <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+  </nav> {% endcomment %}
+  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <section>
+    <div class="row text-center my-4">
+      <div class="col-md-6  mx-auto">
+        <h4>Covid Track</h4>
+        <hr>
+      </div>
+
+   
+      <div class=" text-center">
+        <h5 class="border-botton-2 ">Global Data</h5>
+        <p>{{Global.Date}}</p>
+      </div>
+  
+      <!-- cart  -->
+      <div class="col-md-4 mt-3">
+        <div class="card" style="background-color:#e3f2fd;">
+          <div class="text-center my-2">
+            <p>Total Confirmed</p>
+            <hr>
+            <h4 style="color: rgb(6, 96, 199);">{{Global.TotalConfirmed}}</h4>
+          </div>
+        </div>
+      </div>
+      <!-- cart  -->
+      <div class="col-md-4 mt-3">
+        <div class="card" style="background-color:#e3f2fd;">
+          <div class="text-center my-2">
+            <p>Total Deaths</p>
+            <hr>
+            <h4 style="color: tomato;">{{Global.TotalDeaths}}</h4>
+          </div>
+        </div>
+      </div>
+      <!-- cart  -->
+      <div class="col-md-4 mt-3">
+        <div class="card" style="background-color:#e3f2fd;">
+          <div class="text-center my-2">
+            <p>Total Recovered</p>
+            <hr>
+            <h4 style="color: seagreen;">{{Global.TotalRecovered}}</h4>
+          </div>
+        </div>
+      </div>
+  
+  
+  
+      <!-- new start  -->
+  
+      <div class="col-md-4 mt-3">
+        <div class="card" style="background-color:#e3f2fd;">
+          <div class="text-center my-2">
+            <p>New Confirmed</p>
+            <hr>
+            <h4 style="color: rgb(6, 96, 199);">{{Global.NewConfirmed}}</h4>
+          </div>
+        </div>
+      </div>
+      <!-- cart  -->
+      <div class="col-md-4 mt-3">
+        <div class="card" style="background-color:#e3f2fd;">
+          <div class="text-center my-2">
+            <p>New Deaths</p>
+            <hr>
+            <h4 style="color: tomato;">{{Global.NewDeaths}}</h4>
+          </div>
+        </div>
+      </div>
+      <!-- cart  -->
+      <div class="col-md-4 mt-3">
+        <div class="card" style="background-color:#e3f2fd;">
+          <div class="text-center my-2">
+            <p>New Recovered</p>
+            <hr>
+            <h4 style="color: seagreen;">{{Global.NewRecovered}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+  </section>
+
+
+  <section class=" my-3">
+    <div class="row">
+      <table id="table_id" class="display">
+        <thead class="text-center">
+          <tr>
+            <th>Index</th>
+            <th>Country</th>
+            <th>Total Confirmed</th>
+            <th>Total Deaths</th>
+            <th>Total Recovered</th>
+            <th>New Confirmed</th>
+            <th>New Deaths</th>
+            <th>New Recovered</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          {% for i in Country %}
+          <tr>
+
+            <td>{{forloop.counter}}</td>
+            <td>{{i.Country}}</td>
+            <td>{{i.TotalConfirmed}}</td>
+            <td>{{i.TotalDeaths}}</td>
+            <td>{{i.TotalRecovered}}</td>
+            <td>{{i.NewConfirmed}}</td>
+            <td>{{i.NewDeaths}}</td>
+            <td>{{i.NewRecovered}}</td>
+          </tr>{% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+  </section>
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+    integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#table_id').DataTable();
+    });
+  </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
